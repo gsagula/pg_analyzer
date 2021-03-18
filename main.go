@@ -22,20 +22,33 @@ UPDATE accounts SET balance = balance + 100.00
     WHERE name = 'Wally';
 COMMIT;
 `
-	r_complex, err := p.Parse(txn)
+	t, err := p.Parse(txn)
 	if err != nil {
 		panic(err)
 	}
-	PrintStatements(r_complex)
+	PrintStatements(t)
 
 	// Simple statement
-	sel := "SELECT * FROM accounts"
-
-	r_sel, err := p.Parse(sel)
+	s := "SELECT * FROM accounts"
+	r_sel, err := p.Parse(s)
 	if err != nil {
 		panic(err)
 	}
 	PrintStatements(r_sel)
+
+	// Create statement
+	v := `
+CREATE VIEW myview AS
+SELECT city, temp_lo, temp_hi, prcp, date, location
+FROM weather, cities
+WHERE city = name;
+`
+	r_create, err := p.Parse(v)
+	if err != nil {
+		panic(err)
+	}
+	PrintStatements(r_create)
+
 }
 
 func PrintStatements(r *p.ParseResult) {
