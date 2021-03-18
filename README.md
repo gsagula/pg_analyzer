@@ -1,6 +1,6 @@
 ## PG Query Analyzer
 
-CGO library usage example based on native Postgres backend `raw_parser`.
+CGO library based on native Postgres backend `raw_parser` usage example .
 
 ### Running
 ```
