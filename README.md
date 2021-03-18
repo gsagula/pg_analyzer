@@ -1,11 +1,11 @@
-### PG Query Analyzer
+## PG Query Analyzer
 
 CGO library usage example based on native Postgres backend `raw_parser`.
 
-# Running
+### Running
 ```
 $ go build main.go && ./main
 ```
 
-# Notes
+### Notes
 First time may take a few minutes for building the C library.
